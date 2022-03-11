@@ -1,0 +1,91 @@
+main{
+	max-width: 1188px;
+}
+video { 
+    width: 100%; 
+    height: auto; 
+	margin-bottom: 15px;
+} 
+.homeGrid{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-gap: 20px;
+}
+.homeGrid img{
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+    height: 300px;
+	object-fit: cover;
+}
+h2{
+	margin-bottom: 0;
+	margin-top: 1rem;
+	font-size: 2rem;
+}
+a h3{
+	font-weight: 300;
+}
+a{
+	color: #fff;
+}
+a:visited{
+	color: #FFF;
+}
+a:hover{
+	color: #98FB98;
+}
+/*HOVER */
+.hover{
+  position: relative;
+}
+.ontop{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #4E6C4D;
+}
+.hover:hover .ontop{
+  opacity: 0.8;
+}
+.title{
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/*RESPONSIVE DESIGN*/
+@media screen and (max-width: 1500px) {
+.homeGrid{
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	}
+}
+@media screen and (max-width: 800px) {
+.homeGrid{
+	grid-template-columns: minmax(100px, auto);
+	grid-gap: 30px;
+	}
+.homeGrid img{
+    width: 90%;
+    height: 300px;
+	}	
+}
+@media screen and (min-width: 1783px) {
+.homeGrid img{
+    width: 75%;
+	}	
+}

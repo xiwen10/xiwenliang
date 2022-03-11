@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Poster &#8211; Xiwen Liang</title>
+    <meta name="robots" content="max-image-preview:large" />
+    <link rel="dns-prefetch" href="//s.w.org" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Xiwen Liang  Designs &raquo; Cochrane Farmers’ Market Headers Comments Feed"
+      href="https://thomasyee.ca/cochrane-farmers-market-headers/feed/"
+    />
+    <script>
+      window._wpemojiSettings = {
+        baseUrl: "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/",
+        ext: ".png",
+        svgUrl: "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/",
+        svgExt: ".svg",
+        source: {
+          wpemoji:
+            "https:\/\/thomasyee.ca\/wp-includes\/js\/wp-emoji.js?ver=5.8.3",
+          twemoji:
+            "https:\/\/thomasyee.ca\/wp-includes\/js\/twemoji.js?ver=5.8.3"
+        }
+      };
+      /**
+       * @output wp-includes/js/wp-emoji-loader.js
+       */
+
+      (function (window, document, settings) {
+        var src, ready, ii, tests;
+
+        // Create a canvas element for testing native browser support of emoji.
+        var canvas = document.createElement("canvas");
+        var context = canvas.getContext && canvas.getContext("2d");
+
+        /**
+         * Checks if two sets of Emoji characters render the same visually.
+         *
+         * @since 4.9.0
+         *
+         * @private
+         *
+         * @param {number[]} set1 Set of Emoji character codes.
+         * @param {number[]} set2 Set of Emoji character codes.
+         *
+         * @return {boolean} True if the two sets render the same.
+         */
+        function emojiSetsRenderIdentically(set1, set2) {
+          var stringFromCharCode = String.fromCharCode;
+
+          // Cleanup from previous test.
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.fillText(stringFromCharCode.apply(this, set1), 0, 0);
+          var rendered1 = canvas.toDataURL();
+
+          // Cleanup from previous test.
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.fillText(stringFromCharCode.apply(this, set2), 0, 0);
+          var rendered2 = canvas.toDataURL();
+
+          return rendered1 === rendered2;
+        }
+
+        /**
+         * Detects if the browser supports rendering emoji or flag emoji.
+         *
+         * Flag emoji are a single glyph made of two characters, so some browsers
+         * (notably, Firefox OS X) don't support them.
+         *
+         * @since 4.2.0
+         *
+         * @private
+         *
+         * @param {string} type Whether to test for support of "flag" or "emoji".
+         *
+         * @return {boolean} True if the browser can render emoji, false if it cannot.
+         */
+        function browserSupportsEmoji(type) {
+          var isIdentical;
+
+          if (!context || !context.fillText) {
+            return false;
+          }
+
+          /*
+           * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+           * it doesn't work when the font is bolder than 500 weight. So, we
+           * check for bold rendering support to avoid invisible emoji in Chrome.
+           */
+          context.textBaseline = "top";
+          context.font = "600 32px Arial";
+
+          switch (type) {
+            case "flag":
+              /*
+               * Test for Transgender flag compatibility. This flag is shortlisted for the Emoji 13 spec,
+               * but has landed in Twemoji early, so we can add support for it, too.
+               *
+               * To test for support, we try to render it, and compare the rendering to how it would look if
+               * the browser doesn't render it correctly (white flag emoji + transgender symbol).
+               */
+              isIdentical = emojiSetsRenderIdentically(
+                [0x1f3f3, 0xfe0f, 0x200d, 0x26a7, 0xfe0f],
+                [0x1f3f3, 0xfe0f, 0x200b, 0x26a7, 0xfe0f]
+              );
+
+              if (isIdentical) {
+                return false;
+              }
+
+              /*
+               * Test for UN flag compatibility. This is the least supported of the letter locale flags,
+               * so gives us an easy test for full support.
+               *
+               * To test for support, we try to render it, and compare the rendering to how it would look if
+               * the browser doesn't render it correctly ([U] + [N]).
+               */
+              isIdentical = emojiSetsRenderIdentically(
+                [0xd83c, 0xddfa, 0xd83c, 0xddf3],
+                [0xd83c, 0xddfa, 0x200b, 0xd83c, 0xddf3]
+              );
+
+              if (isIdentical) {
+                return false;
+              }
+
+              /*
+               * Test for English flag compatibility. England is a country in the United Kingdom, it
+               * does not have a two letter locale code but rather an five letter sub-division code.
+               *
+               * To test for support, we try to render it, and compare the rendering to how it would look if
+               * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+               */
+              isIdentical = emojiSetsRenderIdentically(
+                [
+                  0xd83c, 0xdff4, 0xdb40, 0xdc67, 0xdb40, 0xdc62, 0xdb40,
+                  0xdc65, 0xdb40, 0xdc6e, 0xdb40, 0xdc67, 0xdb40, 0xdc7f
+                ],
+                [
+                  0xd83c, 0xdff4, 0x200b, 0xdb40, 0xdc67, 0x200b, 0xdb40,
+                  0xdc62, 0x200b, 0xdb40, 0xdc65, 0x200b, 0xdb40, 0xdc6e,
+                  0x200b, 0xdb40, 0xdc67, 0x200b, 0xdb40, 0xdc7f
+                ]
+              );
+
+              return !isIdentical;
+            case "emoji":
+              /*
+               * Burning Love: Just a hunk, a hunk of burnin' love.
+               *
+               *  To test for Emoji 13.1 support, try to render a new emoji: Heart on Fire!
+               *
+               * The Heart on Fire emoji is a ZWJ sequence combining ❤️ Red Heart, a Zero Width Joiner and 🔥 Fire.
+               *
+               * 0x2764, 0xfe0f == Red Heart emoji.
+               * 0x200D == Zero-Width Joiner (ZWJ) that links the two code points for the new emoji or
+               * 0x200B == Zero-Width Space (ZWS) that is rendered for clients not supporting the new emoji.
+               * 0xD83D, 0xDD25 == Fire.
+               *
+               * When updating this test for future Emoji releases, ensure that individual emoji that make up the
+               * sequence come from older emoji standards.
+               */
+              isIdentical = emojiSetsRenderIdentically(
+                [0x2764, 0xfe0f, 0x200d, 0xd83d, 0xdd25],
+                [0x2764, 0xfe0f, 0x200b, 0xd83d, 0xdd25]
+              );
+
+              return !isIdentical;
+          }
+
+          return false;
+        }
+
+        /**
+         * Adds a script to the head of the document.
+         *
+         * @ignore
+         *
+         * @since 4.2.0
+         *
+         * @param {Object} src The url where the script is located.
+         * @return {void}
+         */
+        function addScript(src) {
+          var script = document.createElement("script");
+
+          script.src = src;
+          script.defer = script.type = "text/javascript";
+          document.getElementsByTagName("head")[0].appendChild(script);
+        }
+
+        tests = Array("flag", "emoji");
+
+        settings.supports = {
+          everything: true,
+          everythingExceptFlag: true
+        };
+
+        /*
+         * Tests the browser support for flag emojis and other emojis, and adjusts the
+         * support settings accordingly.
+         */
+        for (ii = 0; ii < tests.length; ii++) {
+          settings.supports[tests[ii]] = browserSupportsEmoji(tests[ii]);
+
+          settings.supports.everything =
+            settings.supports.everything && settings.supports[tests[ii]];
+
+          if ("flag" !== tests[ii]) {
+            settings.supports.everythingExceptFlag =
+              settings.supports.everythingExceptFlag &&
+              settings.supports[tests[ii]];
+          }
+        }
+
+        settings.supports.everythingExceptFlag =
+          settings.supports.everythingExceptFlag && !settings.supports.flag;
+
+        // Sets DOMReady to false and assigns a ready function to settings.
+        settings.DOMReady = false;
+        settings.readyCallback = function () {
+          settings.DOMReady = true;
+        };
+
+        // When the browser can not render everything we need to load a polyfill.
+        if (!settings.supports.everything) {
+          ready = function () {
+            settings.readyCallback();
+          };
+
+          /*
+           * Cross-browser version of adding a dom ready event.
+           */
+          if (document.addEventListener) {
+            document.addEventListener("DOMContentLoaded", ready, false);
+            window.addEventListener("load", ready, false);
+          } else {
+            window.attachEvent("onload", ready);
+            document.attachEvent("onreadystatechange", function () {
+              if ("complete" === document.readyState) {
+                settings.readyCallback();
+              }
+            });
+          }
+
+          src = settings.source || {};
+
+          if (src.concatemoji) {
+            addScript(src.concatemoji);
+          } else if (src.wpemoji && src.twemoji) {
+            addScript(src.twemoji);
+            addScript(src.wpemoji);
+          }
+        }
+      })(window, document, window._wpemojiSettings);
+    </script>
+    <style>
+      img.wp-smiley,
+      img.emoji {
+        display: inline !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: 1em !important;
+        width: 1em !important;
+        margin: 0 0.07em !important;
+        vertical-align: -0.1em !important;
+        background: none !important;
+        padding: 0 !important;
+      }
+      .firstBox {
+        display: flex;
+        width: 100%;
+      }
+      .firstImg {
+        width: 230%;
+        margin-right: 20px;
+      }
+      .firstText {
+        margin-left: 10px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      id="wp-block-library-css"
+      href="https://thomasyee.ca/wp-includes/css/dist/block-library/style.css?ver=5.8.3"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      id="main-css"
+      href="https://thomasyee.ca/wp-content/themes/thomasyeeTheme/style.css?ver=5.8.3"
+      media="all"
+    />
+    <link rel="https://api.w.org/" href="https://thomasyee.ca/wp-json/" />
+    <link
+      rel="alternate"
+      type="application/json"
+      href="https://thomasyee.ca/wp-json/wp/v2/posts/105"
+    />
+    <link
+      rel="EditURI"
+      type="application/rsd+xml"
+      title="RSD"
+      href="https://thomasyee.ca/xmlrpc.php?rsd"
+    />
+    <link
+      rel="wlwmanifest"
+      type="application/wlwmanifest+xml"
+      href="https://thomasyee.ca/wp-includes/wlwmanifest.xml"
+    />
+    <meta name="generator" content="WordPress 5.8.3" />
+    <link
+      rel="canonical"
+      href="https://thomasyee.ca/cochrane-farmers-market-headers/"
+    />
+    <link rel="shortlink" href="https://thomasyee.ca/?p=105" />
+    <link
+      rel="alternate"
+      type="application/json+oembed"
+      href="https://thomasyee.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthomasyee.ca%2Fcochrane-farmers-market-headers%2F"
+    />
+    <link
+      rel="alternate"
+      type="text/xml+oembed"
+      href="https://thomasyee.ca/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthomasyee.ca%2Fcochrane-farmers-market-headers%2F&#038;format=xml"
+    />
+
+  </head>
+  <body
+    class="post-template-default single single-post postid-105 single-format-standard"
+  >
+    <header style="background-image: url('background.jpg'); z-index:999">
+      <a href="./index.html"><p class="headerText">Xiwen Liang </p></a>
+      <ul class="subheading">
+        <li>Photographer, Graphic Designer, Illustrator</li>
+      </ul>
+      <a href="./index.html">
+      </a>
+      <nav class="menu">
+        <ul>
+          <li class="page_item page-item-101">
+            <a href="./about.html">About</a>
+          </li>
+          <li class="page_item page-item-100">
+            <a href="./contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Poster</h2>
+      <div class="firstBox">
+        <div class="firstImg" style="margin-left: 8em">
+          <img width="560" height="315" src="./first/4.png" frameborder="0" alt=""/>
+        </div>
+
+        <p class="firstText">
+          This is the first poster I designed. First of all, some warmer tones are used in the picture, among them are more tender pink and beige, and more tender blue, I hope this color can make the whole look more fresh and energetic, because this poster is a representative of our whole class. As well as the name and type of our school, which introduces more detailed courses respectively, I think this can express the information very comprehensively and completely, as well as very neat and eye-catching. The colors overlapped with the blue I did an interweaving to make the colors look easier to dissolve and to make the poser look smoother as well as layered and the color aspect done more smoothly.
+        </p>
+      </div>
+      <figure class="wp-block-gallery columns-2 is-cropped">
+        <ul class="blocks-gallery-grid">
+          <li class="firstBox" style="width: 39.1%; margin: 0em auto">
+            <figure>
+              <a
+                href="./first/5.png"
+                ><img
+                  loading="lazy"
+                  width="1000"
+                  height="462"
+                  src="./first/5.png"
+                  alt=""
+                  sizes="(max-width: 1000px) 100vw, 1000px"
+              /></a>
+            </figure>
+          </li>
+          <li class="firstBox" style="width: 40%; margin: 0em auto">
+            <figure>
+              <a href="./first/6.png">
+				  <img
+                  loading="lazy"
+                  width="1000"
+                  height="464"
+                  src="./first/6.png"
+                  alt=""
+                  sizes="(max-width: 1000px) 100vw, 1000px"
+              /></a>
+            </figure>
+          </li>
+			<p>
+				The theme of the second poster is try something new, it represents my desire to try something new, to explore their own unknown areas, more inspiring to continue to try new things, and out of the comfort zone. This I used a lot of purple as the main tone. The elements of technology seem to be very mysterious and mysterious to represent this feeling of exploring into the unknown.
+			</p>
+			<p>
+				The third  one is a design I created between the poster and the small icons, in which I went through a survey and then divided some fields, and I layered them carefully to better optimize the content of the message I wanted to express. The icons and the text complement each other, they contribute to the harmony of the picture, which can explain the poster in more detail.
+			</p>
+        </ul>
+      </figure>
+    </main>
+
+    <footer>
+      <p>© Xiwen Liang  2022</p>
+    </footer>
+  </body>
+</html>
